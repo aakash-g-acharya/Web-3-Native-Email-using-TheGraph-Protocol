@@ -11,11 +11,11 @@ async function main() {
 
     if (network.config.chainId === 5 && process.env.ETHERSCAN_API_KEY) {
         await Funders.deployTransaction.wait(6)
-        verify(Funders.address, [])
+        verifyGoerli(Funders.address, [])
     }
 }
 
-async function verify(contractAddress, args) {
+async function verifyGoerli(contractAddress, args) {
     console.log("Verifying Contract")
 
     try {
