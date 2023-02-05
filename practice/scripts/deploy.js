@@ -3,15 +3,15 @@ const { ethers, run, network } = require("hardhat")
 
 //async function main
 async function main() {
-    const FundersFactory = await ethers.getContractFactory("Funders")
+    const mailHandlerFactory = await ethers.getContractFactory("mailHandler")
     console.log("Deploying Contract")
-    const Funders = await FundersFactory.deploy()
-    await Funders.deployed()
-    console.log(`Deployed in address ${Funders.address}`)
+    const mailHandler = await mailHandlerFactory.deploy()
+    await mailHandler.deployed()
+    console.log(`Deployed in address ${mailHandler.address}`)
 
     if (network.config.chainId === 5 && process.env.ETHERSCAN_API_KEY) {
-        await Funders.deployTransaction.wait(6)
-        verifyGoerli(Funders.address, [])
+        await mailHandler.deployTransaction.wait(6)
+        verifyGoerli(mailHandler.address, [])
     }
 }
 
