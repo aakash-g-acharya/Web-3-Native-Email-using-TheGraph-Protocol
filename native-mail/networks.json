@@ -1,0 +1,8 @@
+{
+  "goerli": {
+    "MailHandler": {
+      "address": "0x71eA6B670e1b7a8471f3a3daB5e9c0e88fb24983",
+      "startBlock": 0
+    }
+  }
+}
