@@ -1,5 +1,3 @@
-import { getCID } from "./uploadMail.js"
+import { getCID , getMails } from "./uploadMail.js"
 
-const cID = await getCID()
-
-console.log(cID)
+await getMails(await getCID())
