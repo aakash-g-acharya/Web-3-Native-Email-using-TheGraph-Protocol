@@ -1,0 +1,12 @@
+type User @entity {
+  id: ID!
+  publicKey: String!
+}
+
+type TransactionLog @entity {
+  id: ID!
+  to: Bytes!
+  from : Bytes!
+  hash: Bytes!
+}
+

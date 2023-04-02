@@ -32,7 +32,7 @@
       { "internalType": "address", "name": "_address", "type": "address" }
     ],
     "name": "getPublicKey",
-    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
     "stateMutability": "view",
     "type": "function"
   },
@@ -47,7 +47,19 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      { "internalType": "address", "name": "_address", "type": "address" },
+      { "internalType": "string", "name": "publicKey", "type": "string" }
+    ],
+    "name": "registerPublicKey",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "publicKey", "type": "string" }
+    ],
     "name": "registerPublicKey",
     "outputs": [],
     "stateMutability": "nonpayable",

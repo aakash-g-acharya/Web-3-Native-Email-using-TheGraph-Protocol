@@ -32,9 +32,9 @@ export class transactionLog__Params {
   }
 }
 
-export class MailHandler extends ethereum.SmartContract {
-  static bind(address: Address): MailHandler {
-    return new MailHandler("MailHandler", address);
+export class mailHandler extends ethereum.SmartContract {
+  static bind(address: Address): mailHandler {
+    return new mailHandler("mailHandler", address);
   }
 
   checkRegisteredKey(_address: Address): boolean {
@@ -60,25 +60,25 @@ export class MailHandler extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBoolean());
   }
 
-  getPublicKey(_address: Address): Bytes {
-    let result = super.call("getPublicKey", "getPublicKey(address):(bytes32)", [
+  getPublicKey(_address: Address): string {
+    let result = super.call("getPublicKey", "getPublicKey(address):(string)", [
       ethereum.Value.fromAddress(_address)
     ]);
 
-    return result[0].toBytes();
+    return result[0].toString();
   }
 
-  try_getPublicKey(_address: Address): ethereum.CallResult<Bytes> {
+  try_getPublicKey(_address: Address): ethereum.CallResult<string> {
     let result = super.tryCall(
       "getPublicKey",
-      "getPublicKey(address):(bytes32)",
+      "getPublicKey(address):(string)",
       [ethereum.Value.fromAddress(_address)]
     );
     if (result.reverted) {
       return new ethereum.CallResult();
     }
     let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toBytes());
+    return ethereum.CallResult.fromValue(value[0].toString());
   }
 }
 
@@ -132,12 +132,50 @@ export class RegisterPublicKeyCall__Inputs {
   constructor(call: RegisterPublicKeyCall) {
     this._call = call;
   }
+
+  get _address(): Address {
+    return this._call.inputValues[0].value.toAddress();
+  }
+
+  get publicKey(): string {
+    return this._call.inputValues[1].value.toString();
+  }
 }
 
 export class RegisterPublicKeyCall__Outputs {
   _call: RegisterPublicKeyCall;
 
   constructor(call: RegisterPublicKeyCall) {
+    this._call = call;
+  }
+}
+
+export class RegisterPublicKey1Call extends ethereum.Call {
+  get inputs(): RegisterPublicKey1Call__Inputs {
+    return new RegisterPublicKey1Call__Inputs(this);
+  }
+
+  get outputs(): RegisterPublicKey1Call__Outputs {
+    return new RegisterPublicKey1Call__Outputs(this);
+  }
+}
+
+export class RegisterPublicKey1Call__Inputs {
+  _call: RegisterPublicKey1Call;
+
+  constructor(call: RegisterPublicKey1Call) {
+    this._call = call;
+  }
+
+  get publicKey(): string {
+    return this._call.inputValues[0].value.toString();
+  }
+}
+
+export class RegisterPublicKey1Call__Outputs {
+  _call: RegisterPublicKey1Call;
+
+  constructor(call: RegisterPublicKey1Call) {
     this._call = call;
   }
 }

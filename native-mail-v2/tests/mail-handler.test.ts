@@ -7,8 +7,8 @@ import {
   afterAll
 } from "matchstick-as/assembly/index"
 import { Address, Bytes } from "@graphprotocol/graph-ts"
-import { transactionLog } from "../generated/schema"
-import { transactionLog as transactionLogEvent } from "../generated/MailHandler/MailHandler"
+import { ExampleEntity } from "../generated/schema"
+import { transactionLog } from "../generated/mailHandler/mailHandler"
 import { handletransactionLog } from "../src/mail-handler"
 import { createtransactionLogEvent } from "./mail-handler-utils"
 
@@ -30,19 +30,19 @@ describe("Describe entity assertions", () => {
   // For more test scenarios, see:
   // https://thegraph.com/docs/en/developer/matchstick/#write-a-unit-test
 
-  test("transactionLog created and stored", () => {
-    assert.entityCount("transactionLog", 1)
+  test("ExampleEntity created and stored", () => {
+    assert.entityCount("ExampleEntity", 1)
 
     // 0xa16081f360e3847006db660bae1c6d1b2e17ec2a is the default address used in newMockEvent() function
     assert.fieldEquals(
-      "transactionLog",
-      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
+      "ExampleEntity",
+      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a",
       "to",
       "0x0000000000000000000000000000000000000001"
     )
     assert.fieldEquals(
-      "transactionLog",
-      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
+      "ExampleEntity",
+      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a",
       "hash",
       "1234567890"
     )

@@ -1,6 +1,6 @@
 import { newMockEvent } from "matchstick-as"
 import { ethereum, Address, Bytes } from "@graphprotocol/graph-ts"
-import { transactionLog } from "../generated/MailHandler/MailHandler"
+import { transactionLog } from "../generated/mailHandler/mailHandler"
 
 export function createtransactionLogEvent(
   to: Address,

@@ -1,0 +1,25 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: mailHandler
+    network: goerli
+    source:
+      address: "0xe7aA8EFe8610Ed7a0317cafb31bfC5ECd5f7d658"
+      abi: mailHandler
+      startBlock: 8740340
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - User
+        - TransactionLog
+      abis:
+        - name: mailHandler
+          file: ./abis/mailHandler.json
+      eventHandlers:
+        - event: transactionLog(indexed address,bytes32)
+          handler: handletransactionLog
+      file: ./src/mail-handler.ts
