@@ -9,9 +9,11 @@
     },
     "dependencies": {
         "dotenv": "^16.0.3",
+        "file-saver": "^2.0.5",
         "fs": "^0.0.1-security",
         "minimist": "^1.2.5",
         "node-fetch": "^3.3.1",
+        "prompt-sync": "^4.2.0",
         "web3.storage": "^3.1.0"
     },
     "author": "YOUR NAME",
